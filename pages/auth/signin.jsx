@@ -1,9 +1,9 @@
-import { getProviders, signIn } from 'next-auth/react';
+import { getProviders, signIn as SignIntoProvider } from 'next-auth/react';
 import Header from '../../components/Header';
 
 // * Your Custom Auth page goes here as the route
 // ! The filename and route name is to be same
-const signin = ({ providers }) => {
+const signIn = ({ providers }) => {
   return (
     <>
       <Header />
@@ -15,7 +15,7 @@ const signin = ({ providers }) => {
             <div key={provider.name}>
               <button
                 className="p-3 bg-blue-500 rounded-lg text-white"
-                onClick={() => signIn(provider.id, { callbackUrl: '/' })}
+                onClick={() => SignIntoProvider(provider.id, { callbackUrl: '/' })}
               >
                 Sign in with {provider.name}
               </button>
@@ -36,4 +36,4 @@ export async function getServerSideProps() {
   };
 }
 
-export default signin;
+export default signIn;
